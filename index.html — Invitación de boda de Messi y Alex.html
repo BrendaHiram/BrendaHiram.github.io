@@ -1,0 +1,618 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messi & Alex — Nuestra boda</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: #3f3a35;
+      background: #f8f5ef;
+      line-height: 1.6;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          rgba(40, 35, 30, 0.25),
+          rgba(40, 35, 30, 0.45)
+        ),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=80")
+        center / cover;
+      color: white;
+    }
+
+    .hero-content {
+      padding: 30px;
+      animation: fadeIn 2s ease;
+    }
+
+    .eyebrow {
+      font-size: 1rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .names {
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: normal;
+      line-height: 0.95;
+    }
+
+    .ampersand {
+      font-size: 0.5em;
+      font-style: italic;
+      margin: 0 15px;
+    }
+
+    .date {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+    }
+
+    .open-button {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 32px;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+
+    .open-button:hover {
+      background: white;
+      color: #3f3a35;
+    }
+
+    /* ---------- GENERAL ---------- */
+
+    section {
+      padding: 100px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+      color: #777;
+    }
+
+    /* ---------- INTRO ---------- */
+
+    .intro {
+      text-align: center;
+      background: #fffdf9;
+    }
+
+    .intro p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.25rem;
+      font-style: italic;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: #a99b88;
+      margin: 30px auto;
+    }
+
+    /* ---------- DETAILS ---------- */
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .detail-card {
+      text-align: center;
+      padding: 35px 20px;
+      background: #fffdf9;
+    }
+
+    .detail-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .detail-card h3 {
+      font-size: 1.3rem;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .detail-card p {
+      color: #777;
+    }
+
+    /* ---------- STORY ---------- */
+
+    .story {
+      background: #e9e2d6;
+    }
+
+    .story-content {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      font-size: 1.15rem;
+    }
+
+    /* ---------- COUNTDOWN ---------- */
+
+    .countdown {
+      background: #37322d;
+      color: white;
+      text-align: center;
+    }
+
+    .countdown h2 {
+      font-size: 2.5rem;
+      font-weight: normal;
+    }
+
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    .timer-item {
+      min-width: 70px;
+    }
+
+    .timer-number {
+      font-size: 3rem;
+      display: block;
+    }
+
+    .timer-label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* ---------- LOCATION ---------- */
+
+    .location {
+      text-align: center;
+    }
+
+    .map-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 30px;
+      background: #3f3a35;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .map-button:hover {
+      background: #665d53;
+    }
+
+    /* ---------- RSVP ---------- */
+
+    .rsvp {
+      background: #fffdf9;
+      text-align: center;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 15px 40px;
+      background: #3f3a35;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 60px 20px;
+      text-align: center;
+      background: #37322d;
+      color: white;
+    }
+
+    footer .footer-names {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      opacity: 0.7;
+    }
+
+    /* ---------- ANIMATION ---------- */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media (max-width: 700px) {
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .timer {
+        gap: 15px;
+      }
+
+      .timer-number {
+        font-size: 2rem;
+      }
+
+      .names {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Nuestra boda
+      </div>
+
+      <h1 class="names">
+        Messi
+        <span class="ampersand">&</span>
+        Alex
+      </h1>
+
+      <div class="date">
+        14 · 11 · 2026
+      </div>
+
+      <a href="#invitacion" class="open-button">
+        Abrir invitación
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- INTRO -->
+
+  <section id="invitacion" class="intro">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Nos casamos
+      </h2>
+
+      <div class="divider"></div>
+
+      <p>
+        Hay momentos en la vida que merecen ser compartidos
+        con las personas que más queremos.
+        Nos encantaría que formaras parte de este día tan especial.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- DETAILS -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        El gran día
+      </h2>
+
+      <p class="section-subtitle">
+        Guarda la fecha y acompáñanos a celebrar nuestro comienzo.
+      </p>
+
+      <div class="details">
+
+        <div class="detail-card">
+          <div class="detail-icon">📅</div>
+          <h3>Fecha</h3>
+          <p>
+            Sábado<br>
+            14 de noviembre de 2026
+          </p>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-icon">🕰️</div>
+          <h3>Hora</h3>
+          <p>
+            Ceremonia<br>
+            17:00 hrs.
+          </p>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-icon">👗</div>
+          <h3>Vestimenta</h3>
+          <p>
+            Formal<br>
+            Elegante
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STORY -->
+
+  <section class="story">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Nuestra historia
+      </h2>
+
+      <div class="divider"></div>
+
+      <div class="story-content">
+
+        <p>
+          Dos personas, dos caminos y un encuentro que cambió
+          la dirección de ambos.
+        </p>
+
+        <br>
+
+        <p>
+          Desde aquel primer momento hasta este día,
+          hemos compartido aventuras, risas, sueños
+          y momentos que queremos seguir construyendo juntos.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNTDOWN -->
+
+  <section class="countdown">
+
+    <div class="container">
+
+      <h2>
+        Falta muy poco
+      </h2>
+
+      <div class="timer">
+
+        <div class="timer-item">
+          <span id="days" class="timer-number">0</span>
+          <span class="timer-label">Días</span>
+        </div>
+
+        <div class="timer-item">
+          <span id="hours" class="timer-number">0</span>
+          <span class="timer-label">Horas</span>
+        </div>
+
+        <div class="timer-item">
+          <span id="minutes" class="timer-number">0</span>
+          <span class="timer-label">Minutos</span>
+        </div>
+
+        <div class="timer-item">
+          <span id="seconds" class="timer-number">0</span>
+          <span class="timer-label">Segundos</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LOCATION -->
+
+  <section class="location">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        ¿Dónde será?
+      </h2>
+
+      <p class="section-subtitle">
+        Hacienda Los Olivos<br>
+        Monterrey, Nuevo León
+      </p>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver ubicación
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- RSVP -->
+
+  <section class="rsvp">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        ¿Nos acompañas?
+      </h2>
+
+      <p class="section-subtitle">
+        Por favor confirma tu asistencia antes del
+        15 de octubre de 2026.
+      </p>
+
+      <a
+        href="#"
+        class="rsvp-button"
+      >
+        Confirmar asistencia
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-names">
+      Messi & Alex
+    </div>
+
+    <p>
+      14 · 11 · 2026
+    </p>
+
+    <br>
+
+    <p>
+      Con amor, para siempre.
+    </p>
+
+  </footer>
+
+
+  <!-- COUNTDOWN SCRIPT -->
+
+  <script>
+
+    // Cambia esta fecha por la fecha real de la boda.
+    const weddingDate =
+      new Date("November 14, 2026 17:00:00").getTime();
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+      );
+
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+      );
+
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+      );
+
+      const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+      );
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
+</body>
+</html>
+```
